@@ -17,29 +17,17 @@ namespace Saints.Logic
 
         //Card Constructor
         //Note only name, info directory, & traits are required
-        public SaintCard(string name, string Directory, string[] traits, string[] nicknames = null, string[] titles = null)
+        public SaintCard(string name, string directory, string[] traits, string[] nicknames = null, string[] titles = null)
         {
             Name = name;
-            Directory = Directory;
+            Directory = directory;
             if (traits != null) { Traits.AddRange(traits); }
             if (nicknames != null) { Nicknames.AddRange(nicknames); }
             if (titles != null) { Titles.AddRange(titles); }
         }
         
-        //gets the directory for the Saint description & info blurb
-        public string GetDirectory() { return Directory; }
-        
         //checks if the saint has a specific trait
         public bool HasTrait(string trait) { return Traits.Contains(trait); }
-        
-        //gets a list of the saints traits
-        public string[] GetTraits() { return Traits.ToArray(); }
-        
-        //gets a list of the saints nicknames
-        public string[] GetNicknames() { return Nicknames.ToArray(); }
-        
-        //gets a list of the saints titles
-        public string[] GetTitles() { return Titles.ToArray(); }
         
         
     }
