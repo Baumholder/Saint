@@ -1,9 +1,13 @@
-﻿namespace Saints.Logic
+﻿using System;
+namespace Saints.Logic
 {
-    //uses the logic namespaces
-    using Saints.Logic;
+    
+    //todo remove
     class Main
     {
-        
+        Main()
+        {
+            Test tester = new Test();
+        }
     }
 }

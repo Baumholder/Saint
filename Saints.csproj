@@ -42,11 +42,16 @@
     <ItemGroup>
         <Compile Include="Program.cs"/>
         <Compile Include="Properties\AssemblyInfo.cs"/>
+        <Compile Include="Src\Logic\Database.cs" />
         <Compile Include="Src\Logic\SaintCard.cs" />
         <Compile Include="Src\Logic\Main.cs" />
+        <Compile Include="Src\Logic\Test.cs" />
     </ItemGroup>
     <ItemGroup>
       <Folder Include="Src\Saints\" />
+    </ItemGroup>
+    <ItemGroup>
+      <Content Include="Src\Logic\Plan" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

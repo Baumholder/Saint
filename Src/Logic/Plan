@@ -1,0 +1,22 @@
+﻿I will have all the cards information in a folder. Main will launch a class called "CardMaker" that will create a 
+dictionary of cards using the cards name as the first part of the dictionary & a card object as the second. The card 
+object will hold the name, basic card traits, and a directory to the cards file so that the game can pull the cards 
+entire information as needed. 
+
+Todo 
+-figure out card format (JSON or XML)
+-possible use a data instead of individual files for each Saint.
+
+
+
+What the user sees for each saint:
+Name + Tiles(main title is first)
+Nicknames + Other Titles
+Traits
+Patron
+Info Blurb
+
+
+Note cards will not be edited except from the
+
+Really, really want to use a dictionary. But list will make the rest of the code easier. 
