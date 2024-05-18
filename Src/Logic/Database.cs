@@ -10,8 +10,8 @@ namespace Saints.Logic
         private readonly Dictionary<string, HashSet<int>> _name;
         private readonly Dictionary<string, HashSet<int>> _traits;
         private readonly Dictionary<string, HashSet<int>> _virtues;
-        private Dictionary<string, HashSet<int>> _patron;
-        private Dictionary<string, HashSet<int>> _titles;
+        private readonly Dictionary<string, HashSet<int>> _patron;
+        private readonly Dictionary<string, HashSet<int>> _titles;
         private int _index;
         
             
@@ -60,11 +60,14 @@ namespace Saints.Logic
                 _virtues.Add(i, new HashSet<int>(adder));
             }
         }
-
-        //Adds to the list of saints
-        //Takes in the info for one saint and adds them to the database
-        //Does not detect repeats of already added saints
-        //!!!!!Should only be used at the launch of the program!!!!!
+        
+        /*
+         * Below is the logic to add Saints to the database
+         * Note the add function can not detect repeat saints
+         * Note for thread safety purposes, Saints should only be added when their is no current search
+         */
+        
+        //Adds a saint to the database
         public void Add(SaintCard saint)
         {
             //Initial Variables
@@ -167,20 +170,61 @@ namespace Saints.Logic
             }
         }
         
-        //As name implies
+        /*
+         * Below are Get Functions
+         */
+        
+        //Gets the total number of Saints stored
         public int GetSaintCount()
         {
             return _index;
         }
         
         //Short for "Get Saint With Index"
-        //As name implies
+        //Gets the SaintCard matching a provided Index
         public SaintCard GetSaintWIndex(int index)
         {
             return _data[index];
         }
+
+        //Short for "Get Index With Name"
+        //Gets a Hashset of Saint Index's matching a provided name 
+        public HashSet<int> GetIndexWName(string name)
+        {
+            return _name[name];
+        }
         
-        //Any Command below here is used for testing
+        //Short for "Get Index With Traits"
+        //Gets a Hashset of Saint Index's matching a provided trait 
+        public HashSet<int> GetIndexWTrait(string trait)
+        {
+            return _traits[trait];
+        }
+        
+        //Short for "Get Index With Virtues"
+        //Gets a Hashset of Saint Index's matching a provided virtue 
+        public HashSet<int> GetIndexWVirtue(string virtue)
+        {
+            return _virtues[virtue];
+        }
+        
+        //Short for "Get Index With Patronage"
+        //Gets a Hashset of Saint Index's matching a provided patronage 
+        public HashSet<int> GetIndexWPatron(string patron)
+        {
+            return _patron[patron];
+        }
+        
+        //Short for "Get Index With Title"
+        //Gets a Hashset of Saint Index's matching a provided title 
+        public HashSet<int> GetIndexWTitle(string title)
+        {
+            return _titles[title];
+        }
+        
+        /*
+         * Below are Testing Functions
+         */
         public HashSet<int> TestNames(string testName)
         {
             return _name[testName];

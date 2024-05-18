@@ -45,6 +45,7 @@
         <Compile Include="Src\Logic\Database.cs" />
         <Compile Include="Src\Logic\SaintCard.cs" />
         <Compile Include="Src\Logic\Main.cs" />
+        <Compile Include="Src\Logic\SearchAlgorithm.cs" />
         <Compile Include="Src\Logic\Test.cs" />
     </ItemGroup>
     <ItemGroup>
