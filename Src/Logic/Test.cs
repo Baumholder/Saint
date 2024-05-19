@@ -12,6 +12,8 @@ namespace Saints.Logic
             SaintCardTest();
             Console.Write(Environment.NewLine);
             DatabaseTest();
+            Console.Write(Environment.NewLine);
+            SearchAlgorithmTest();
         }
         
         //Test for the SaintCard Class
@@ -108,5 +110,57 @@ namespace Saints.Logic
             
             Console.Write("All Database Tests Passed");
         } 
+        
+        //tests for the Search Algorithm Class
+        private void SearchAlgorithmTest()
+        {
+            string[] traits = new string[] {"Martyr", "Man"};
+            string[] virtues = new string[] {"Prudence", "Diligence"};
+            SaintCard tester1 = new SaintCard("Tester", "c/", traits, virtues);
+            virtues[1] = "Patience";
+            string[] patron = new string[] {"Testing"};
+            string[] titles = new string[] {"Cardinal", "Baron"};
+            string[] nicknames = new string[] { "Test Dummy" };
+            SaintCard tester2 = new SaintCard("Tester", "c/", traits, virtues, patron, titles, nicknames);
+            
+            Database database = new Database();
+            SearchAlgorithm searchAlgorithm = new SearchAlgorithm(database);
+            searchAlgorithm.AddSaint(tester1);
+            searchAlgorithm.AddSaint(tester2);
+
+            int[] results = searchAlgorithm.Search("Tester", traits, null, null, null);
+            
+            //initial test of the database
+            if (results[0] != 1 || results[1] != 0)
+            {
+                Console.WriteLine("Expected a Index order of 1 0, Got: {0} {1}", results[0], results[1]);
+                return;
+            }
+            
+            //tests the database for an exact name
+            SaintCard tester3 = new SaintCard("Buster", "c/", traits, virtues);
+            searchAlgorithm.AddSaint(tester3);
+            results = searchAlgorithm.Search("Buster", null, null, null, null);
+            if (results[0] != 2 || results.Length != 1)
+            {
+                Console.WriteLine("Expected a Index of 2 and a result size of 1, Got: {0}, {1})", 
+                    results[0], results.Length);
+                return;
+            }
+            
+            //Test for when you search for a name that does not exist in the dictionary
+            //todo
+            string[] bad = new string[] { "bad" };
+            try
+            {
+                results = searchAlgorithm.Search("TroubleMaker", bad, bad, bad, bad);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error caused by searching with a key not in the dictionary, error: {0}", ex);
+            }
+            
+            Console.Write("All Search Algorithm Tests Passed");
+        }
     }
 }

@@ -49,20 +49,24 @@ namespace Saints.Logic
                 AddResults(_database.GetIndexWName(name), NameWeight);
             
             //Looks up the Traits
-            foreach (string temp in traits)
-                AddResults(_database.GetIndexWTrait(temp), TraitsWeight);
+            if (traits != null)
+                foreach (string temp in traits)
+                    AddResults(_database.GetIndexWTrait(temp), TraitsWeight);
             
             //Looks up the Virtues
-            foreach (string temp in virtues)
-                AddResults(_database.GetIndexWVirtue(temp), VirtuesWeight);
+            if (virtues != null)
+                foreach (string temp in virtues)
+                    AddResults(_database.GetIndexWVirtue(temp), VirtuesWeight);
             
             //Looks up the Patronages
-            foreach (string temp in patron)
-                AddResults(_database.GetIndexWPatron(temp), PatronWeight);
+            if (patron != null)
+                foreach (string temp in patron)
+                    AddResults(_database.GetIndexWPatron(temp), PatronWeight);
             
             //Look up the Titles
-            foreach (string temp in titles)
-                AddResults(_database.GetIndexWTitle(temp), TitleWeight);
+            if (titles != null)
+                foreach (string temp in titles)
+                    AddResults(_database.GetIndexWTitle(temp), TitleWeight);
             
             //sorts the search results by weight & returns the sorted array
             var indexUnsorted = _indexWeighted.ToList();
@@ -70,16 +74,22 @@ namespace Saints.Logic
             return indexUnsorted.Select(x => x.Key).ToArray();
         }
 
-        //Adds the results of a specific search to a dictionary of the complete search results
+        //Adds the results of the search to a tally
         private void AddResults(HashSet<int> indexResults, int weight)
         {
-            foreach (int index in indexResults) 
+            //If the search results were empty then no action is taken
+            if (indexResults == null)
             {
-                if (_indexWeighted.ContainsKey(index)) 
+                return;
+            }
+            //Adds the results of the search
+            foreach (int index in indexResults)
+            {
+                if (_indexWeighted.ContainsKey(index))
                 {
                     _indexWeighted[index] += weight;
                 }
-                else 
+                else
                 {
                     _indexWeighted[index] = weight;
                 }

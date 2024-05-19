@@ -8,3 +8,14 @@ Make patronage a defined class too
 Add thread search capabilties
 Make weights customizable
 Add popularity as a search result
+Add a function to return a random Saint
+Add Saint Days
+Add a "of" category
+Handle cases when search results are not there
+
+
+
+
+Process
+-Add the saint adder class
+-Save the search algorithm/database class

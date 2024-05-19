@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Net.NetworkInformation;
 
 namespace Saints.Logic
 {
@@ -185,42 +186,42 @@ namespace Saints.Logic
         //Gets the SaintCard matching a provided Index
         public SaintCard GetSaintWIndex(int index)
         {
-            return _data[index];
+            return _data.TryGetValue(index, out var data) ? data : null;
         }
 
         //Short for "Get Index With Name"
         //Gets a Hashset of Saint Index's matching a provided name 
         public HashSet<int> GetIndexWName(string name)
         {
-            return _name[name];
+            return _name.TryGetValue(name, out var data) ? data : null;
         }
         
         //Short for "Get Index With Traits"
         //Gets a Hashset of Saint Index's matching a provided trait 
         public HashSet<int> GetIndexWTrait(string trait)
         {
-            return _traits[trait];
+            return _traits.TryGetValue(trait, out var data) ? data : null;
         }
         
         //Short for "Get Index With Virtues"
         //Gets a Hashset of Saint Index's matching a provided virtue 
         public HashSet<int> GetIndexWVirtue(string virtue)
         {
-            return _virtues[virtue];
+            return _virtues.TryGetValue(virtue, out var data) ? data : null;
         }
         
         //Short for "Get Index With Patronage"
         //Gets a Hashset of Saint Index's matching a provided patronage 
         public HashSet<int> GetIndexWPatron(string patron)
         {
-            return _patron[patron];
+            return _patron.TryGetValue(patron, out var data) ? data : null;
         }
         
         //Short for "Get Index With Title"
         //Gets a Hashset of Saint Index's matching a provided title 
         public HashSet<int> GetIndexWTitle(string title)
         {
-            return _titles[title];
+            return _titles.TryGetValue(title, out var data) ? data : null;
         }
         
         /*

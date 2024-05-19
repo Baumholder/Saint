@@ -21,13 +21,14 @@ namespace Saints.Logic
         public List<string> Patron { get; set; } = new List<string>();
         public List<string> Titles { get; set; } = new List<string>();
         public List<string> Nicknames { get; set; } = new List<string>();
+        public List<string> FeastDay { get; set; } = new List<string>();
         public int Index { get; set; }
-        private int Popularity;
+        public int Popularity;
 
         //Card Constructor
         //Note only name, info directory, & traits are required
         public SaintCard(string name, string directory, string[] traits, string[] virtues, string[] patron = null, 
-            string[] titles = null, string[] nicknames = null)
+            string[] titles = null, string[] nicknames = null, string[] feastday = null, int popularity = 5)
         {
             Name = name;
             Directory = directory;
@@ -36,6 +37,8 @@ namespace Saints.Logic
             if (patron != null) { Patron.AddRange(patron); }
             if (titles != null) { Titles.AddRange(titles); }
             if (nicknames != null) { Nicknames.AddRange(nicknames); }
+            if (feastday != null) { Nicknames.AddRange(feastday); }
+            Popularity = popularity;
         }
         
         //checks if the saint has a specific trait
