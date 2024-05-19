@@ -172,6 +172,7 @@ namespace Saints.Logic
         
         /*
          * Below are Get Functions
+         * todo make the get commands have tolerance
          */
         
         //Gets the total number of Saints stored
