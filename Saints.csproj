@@ -49,10 +49,8 @@
         <Compile Include="Src\Logic\Test.cs" />
     </ItemGroup>
     <ItemGroup>
-      <Folder Include="Src\Saints\" />
-    </ItemGroup>
-    <ItemGroup>
       <Content Include="Src\Logic\Plan" />
+      <Content Include="Src\Saints\SaintList.txt" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

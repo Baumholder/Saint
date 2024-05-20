@@ -7,12 +7,18 @@ namespace Saints.Logic
     {
         private readonly Database _database;
         private readonly Dictionary<int, int> _indexWeighted;
+        private int _nameWeight;
+        private int _traitsWeight;
+        private int _virtuesWeight;
+        private int _patronWeight;
+        private int _titleWeight;
         
         //Constructor
         public SearchAlgorithm (Database database)
         {
             _database = database;
             _indexWeighted = new Dictionary<int, int>();
+            ChangeWeights();
         }
 
         //Adds a saint to the Database
@@ -31,11 +37,18 @@ namespace Saints.Logic
          * Search Algorithm Below
          * Note Search Weight
          */
-        private int NameWeight = 4;
-        private int TraitsWeight = 2;
-        private int VirtuesWeight = 1;
-        private int PatronWeight = 4;
-        private int TitleWeight = 1;
+        
+        //command to change the search algorithm
+        //Type the command with no parameters to reset to default
+        public void ChangeWeights(int name = 4, int traits = 2, int virtues = 1, int patron = 4, int title = 1)
+        {
+            _nameWeight = name;
+            _traitsWeight = traits;
+            _virtuesWeight = virtues;
+            _patronWeight = patron;
+            _titleWeight = title;
+        }
+        
         
         //Search Algorithm. Returns an array of Saint Index
         //todo add threads to the dictionary searches
@@ -46,27 +59,27 @@ namespace Saints.Logic
             
             //looks up the Name
             if (name != null)
-                AddResults(_database.GetIndexWName(name), NameWeight);
+                AddResults(_database.GetIndexWName(name), _nameWeight);
             
             //Looks up the Traits
             if (traits != null)
                 foreach (string temp in traits)
-                    AddResults(_database.GetIndexWTrait(temp), TraitsWeight);
+                    AddResults(_database.GetIndexWTrait(temp), _traitsWeight);
             
             //Looks up the Virtues
             if (virtues != null)
                 foreach (string temp in virtues)
-                    AddResults(_database.GetIndexWVirtue(temp), VirtuesWeight);
+                    AddResults(_database.GetIndexWVirtue(temp), _virtuesWeight);
             
             //Looks up the Patronages
             if (patron != null)
                 foreach (string temp in patron)
-                    AddResults(_database.GetIndexWPatron(temp), PatronWeight);
+                    AddResults(_database.GetIndexWPatron(temp), _patronWeight);
             
             //Look up the Titles
             if (titles != null)
                 foreach (string temp in titles)
-                    AddResults(_database.GetIndexWTitle(temp), TitleWeight);
+                    AddResults(_database.GetIndexWTitle(temp), _titleWeight);
             
             //sorts the search results by weight & returns the sorted array
             var indexUnsorted = _indexWeighted.ToList();

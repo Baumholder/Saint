@@ -1,20 +1,13 @@
 ﻿Todo
-Add a remove saint function to the database
-Make it so you can modify the database in the search algorithm.
-Handle when a dictionary lookup is false, as in their is nothing under that name
+Add a remove saint function to the database, and able to reuse index
 Make it so all names in the dictionaries are lower cases
 Add a tolerance system with names, patronages, and titles
-Make patronage a defined class too
-Add thread search capabilties
-Make weights customizable
-Add popularity as a search result
+Add threads to the search algorithm
+Add popularity & feast day as a search result
 Add a function to return a random Saint
-Add Saint Days
-Add a "of" category
-Handle cases when search results are not there
 
-
-
+Tests
+-Test the weights are being applied correctly
 
 Process
 -Add the saint adder class

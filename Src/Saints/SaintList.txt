@@ -1,0 +1,3 @@
+﻿#public SaintCard(string name, string directory, string[] traits, string[] virtues, string[] patron = null, 
+             string[] titles = null, string[] nicknames = null, string[] feastday = null, int popularity = 5)
+             

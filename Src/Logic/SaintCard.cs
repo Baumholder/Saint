@@ -4,14 +4,16 @@ namespace Saints.Logic
 {
     public class SaintCard
     {
-        //List of all Saint traits
+        //List of all Saint traits. 
         //Martyr, Apostle, Evangelist, Doctor, Virgin, Monastic, Hermit, Pope, Clergy, Noble, VirginMartyr
-        //Social, Mystic, Missionary, Military, Layperson, Child, Woman, Man, Local, Unknown
+        //Social, Mystic, Missionary, Military, Layperson, Child, Woman, Man, Local, Angel, Legend, Servant of God,
+        //Venerable, Beatification, Canonization, 
         
         //List of all possible Virtues. From the Cardinal Virtues, then Theological Virtues, then both Capital virtues
         //Prudence, Justice, Fortitude, Temperance | Faith, Hope, Charity |Chastity, Faith, Good Works, Concord,
         //Sobriety, Patience, Humility | Chastity, Temperance, Charity, Diligence, Kindness, Patience, Humility
         
+        //Titles mean "of location"
         
         //list of the different SaintCard Values
         public string Name { get; set; }
@@ -23,7 +25,7 @@ namespace Saints.Logic
         public List<string> Nicknames { get; set; } = new List<string>();
         public List<string> FeastDay { get; set; } = new List<string>();
         public int Index { get; set; }
-        public int Popularity;
+        public int Popularity { get; set; }
 
         //Card Constructor
         //Note only name, info directory, & traits are required

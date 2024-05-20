@@ -43,7 +43,7 @@ namespace Saints.Logic
         {
             string[] traits = new string[] { "Martyr", "Apostle", "Evangelist", "Doctor", "Virgin", "Monastic", "Hermit",
                 "Pope", "Clergy", "Noble", "VirginMartyr", "Social", "Mystic", "Missionary", "Military", "Layperson",
-                "Child", "Woman", "Man", "Local", "Unknown", "Mythical"};
+                "Child", "Woman", "Man", "Local", "Angel", "Legend"};
             foreach (string i in traits)
             {
                 _traits.Add(i, new HashSet<int>(adder));
@@ -65,7 +65,7 @@ namespace Saints.Logic
         /*
          * Below is the logic to add Saints to the database
          * Note the add function can not detect repeat saints
-         * Note for thread safety purposes, Saints should only be added when their is no current search
+         * Note for thread safety purposes, Saints should only be added when there is no current search
          */
         
         //Adds a saint to the database
